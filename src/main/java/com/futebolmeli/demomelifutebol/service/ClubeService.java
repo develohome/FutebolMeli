@@ -49,11 +49,13 @@ public class ClubeService {
                 return "Estado invalido";
             }
 
-            clubeRepository.save(clube);
+            if(clubeRepository.existsByClube(clube.getClube())) {
+                return "Clube ja existente";
+            }
+           // clubeRepository.save(clube);
             return "Clube: " + clube.getClube() + ", cadastrado com sucesso!";
         } catch (Exception e) {
             return e.getMessage();
         }
-
     }
 }

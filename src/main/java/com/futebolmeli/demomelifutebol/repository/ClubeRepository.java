@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClubeRepository extends JpaRepository<Clube, Long> {
+    Boolean existsByClube(String clube);
 }

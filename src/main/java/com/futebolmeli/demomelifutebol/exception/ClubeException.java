@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 
@@ -37,8 +38,9 @@ public class ClubeException {
     }
 
     public Boolean validarEstado(List<Estados> estados){
+        //return estados.contains("SP");
         for(Estados estado : estados){
-            if(clube.getEstado().equals(estado.getSilga())){
+            if(clube.getEstado().toUpperCase().equals(estado.getSilga())){
                 return true;
             }
         }
