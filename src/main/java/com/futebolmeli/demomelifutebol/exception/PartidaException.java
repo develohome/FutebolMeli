@@ -23,8 +23,6 @@ public class PartidaException {
         return  null;
     }
 
-
-
     public String validarDataPArtida(LocalDate partida, List<Partida> partidaList) {
 
         for(Partida p : partidaList){
