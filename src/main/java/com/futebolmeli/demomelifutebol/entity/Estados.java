@@ -12,15 +12,15 @@ public class Estados {
 
     private String estado;
 
-    private String silga;
+    private String sigla;
 
     public Estados() {
     }
 
-    public Estados(Long id, String estado, String silga) {
+    public Estados(Long id, String estado, String sigla) {
         this.id = id;
         this.estado = estado;
-        this.silga = silga;
+        this.sigla = sigla;
     }
 
     public Long getId() {
@@ -39,11 +39,11 @@ public class Estados {
         this.estado = estado;
     }
 
-    public String getSilga() {
-        return silga;
+    public String getSigla() {
+        return sigla;
     }
 
-    public void setSilga(String silga) {
-        this.silga = silga;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 }

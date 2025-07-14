@@ -18,7 +18,7 @@ public class Clube {
 
     private String estado;
     private Date datacriacao;
-    private Boolean ativo;
+    private Boolean ativo  = true;
 
     public Clube() {
     }

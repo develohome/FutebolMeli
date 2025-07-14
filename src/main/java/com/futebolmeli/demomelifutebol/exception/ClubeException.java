@@ -5,11 +5,9 @@ import com.futebolmeli.demomelifutebol.entity.Estados;
 import com.futebolmeli.demomelifutebol.repository.EstadosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 
 public class ClubeException {
@@ -38,12 +36,12 @@ public class ClubeException {
     }
 
     public Boolean validarEstado(List<Estados> estados){
-        //return estados.contains("SP");
         for(Estados estado : estados){
-            if(clube.getEstado().toUpperCase().equals(estado.getSilga())){
+            if(estado.getSigla().equals(clube.getEstado().toUpperCase())){
                 return true;
             }
         }
         return false;
     }
+
 }

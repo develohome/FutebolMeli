@@ -8,10 +8,7 @@ import com.futebolmeli.demomelifutebol.repository.EstadosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ClubeService {
@@ -22,6 +19,7 @@ public class ClubeService {
     @Autowired
     private EstadosRepository estadosRepository;
 
+    private Map<Long, Clube> clube = new HashMap<>();
 
     public List<Clube> listarClubes() {
         return clubeRepository.findAll();
@@ -33,7 +31,6 @@ public class ClubeService {
     }
 
     public String cadastrar(Clube clube) {
-
         try {
             ClubeException tratamentoErro = new ClubeException(clube);
 
@@ -52,10 +49,24 @@ public class ClubeService {
             if(clubeRepository.existsByClube(clube.getClube())) {
                 return "Clube ja existente";
             }
-           // clubeRepository.save(clube);
+
+            clubeRepository.save(clube);
             return "Clube: " + clube.getClube() + ", cadastrado com sucesso!";
         } catch (Exception e) {
             return e.getMessage();
         }
+    }
+
+    public String atualizar(Long id, Clube clube) {
+        clube.setId(id);
+        this.clube.put(id, clube);
+        return "Atualizado com sucesso!";
+    }
+
+    public String deletarClub(Long id) {
+        Clube clubeEncontrado = clubeRepository.findById(id).orElse(null);
+        clubeEncontrado.setAtivo(false);
+        clubeEncontrado = clubeRepository.save(clubeEncontrado);
+        return clubeEncontrado.getClube() + ", deletado com sucesso!";
     }
 }

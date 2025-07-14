@@ -30,6 +30,22 @@ public class ClubeController {
     @PostMapping("/")
     public ResponseEntity<String> criarClubes(@RequestBody Clube clube) {
         String mensagem = clubeService.cadastrar(clube);
-        return ResponseEntity.status(HttpStatus.CREATED).body(mensagem);
+        if(mensagem.contains("sucesso")) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(mensagem);
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagem);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> atualizarClub(@PathVariable Long id, @RequestBody Clube clube) {
+        String mensagem = clubeService.atualizar(id, clube);
+        return ResponseEntity.status(HttpStatus.CREATED).body(mensagem) ;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletarClub(@PathVariable Long id) {
+        String mensagem =  clubeService.deletarClub(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(mensagem) ;
     }
 }

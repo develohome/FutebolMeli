@@ -27,4 +27,5 @@ public class PartidaService {
         partidaRepository.save(partida);
         return partida.getTime1() + " X " + partida.getTime2() + " cadastrado com sucesso!";
     }
+
 }
