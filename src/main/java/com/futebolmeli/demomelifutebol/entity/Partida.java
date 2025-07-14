@@ -2,6 +2,9 @@ package com.futebolmeli.demomelifutebol.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 @Table(name = "tb_partidas")
 public class Partida {
@@ -13,7 +16,7 @@ public class Partida {
     private int resultado1;
     private int resultado2;
     private String estadio;
-    private String data;
+    private LocalDate data;
 
     public Long getId() {
         return id;
@@ -63,11 +66,11 @@ public class Partida {
         this.estadio = estadio;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 }

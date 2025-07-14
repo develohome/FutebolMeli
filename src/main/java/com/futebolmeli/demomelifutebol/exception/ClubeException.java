@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class ClubeException {
 
-    private static final Logger logger = Logger.getLogger(ClubeException.class.getName());
+   // private static final Logger logger = Logger.getLogger(ClubeException.class.getName());
 
     private Clube clube;
 

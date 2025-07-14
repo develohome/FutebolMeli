@@ -1,6 +1,7 @@
 package com.futebolmeli.demomelifutebol.service;
 
 import com.futebolmeli.demomelifutebol.entity.Partida;
+import com.futebolmeli.demomelifutebol.exception.PartidaException;
 import com.futebolmeli.demomelifutebol.repository.PartidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class PartidaService {
     @Autowired
     private PartidaRepository partidaRepository;
 
+
     public List<Partida> buscarPartidas() {
         return partidaRepository.findAll();
     }
@@ -24,7 +26,23 @@ public class PartidaService {
     }
 
     public String criarPartida(Partida partida) {
-        partidaRepository.save(partida);
+        try{
+            PartidaException partidaException = new PartidaException();
+            List<Partida> partidaList = partidaRepository.findAll();
+
+            if(partidaException.validarDataAnterior(partida.getData()) != null){
+                return partidaException.validarDataAnterior(partida.getData());
+            }
+
+            if(partidaException.validarDataPArtida(partida.getData(), partidaList) != null){
+                return partidaException.validarDataPArtida(partida.getData(), partidaList);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //partidaRepository.save(partida);
         return partida.getTime1() + " X " + partida.getTime2() + " cadastrado com sucesso!";
     }
 
