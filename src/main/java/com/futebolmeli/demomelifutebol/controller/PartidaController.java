@@ -33,4 +33,9 @@ public class PartidaController {
         return  ResponseEntity.status(HttpStatus.CREATED).body(mensagem);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletarPartida(@PathVariable Long id) {
+        String mensagem = partidaService.deletarPartida(id);
+        return  ResponseEntity.status(HttpStatus.NO_CONTENT).body(mensagem);
+    }
 }

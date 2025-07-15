@@ -42,8 +42,13 @@ public class PartidaService {
         }
 
 
-        //partidaRepository.save(partida);
+        partidaRepository.save(partida);
         return partida.getTime1() + " X " + partida.getTime2() + " cadastrado com sucesso!";
+    }
+
+    public String deletarPartida(Long id) {
+        partidaRepository.deleteById(id);
+        return "Partida deletada com sucesso!";
     }
 
 }
