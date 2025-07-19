@@ -27,6 +27,8 @@ public class ClubeController {
         return clubeService.buscarClubePorId(id);
         //return id ;
     }
+
+
     @PostMapping("/")
     public ResponseEntity<String> criarClubes(@RequestBody Clube clube) {
         String mensagem = clubeService.cadastrar(clube);

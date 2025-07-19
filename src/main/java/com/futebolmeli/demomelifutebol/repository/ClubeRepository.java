@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface ClubeRepository extends JpaRepository<Clube, Long> {
     Boolean existsByClube(String clube);
+    Boolean existsById(long id);
+
     //List<Clube> findByClubeAtivoTrue();
 }

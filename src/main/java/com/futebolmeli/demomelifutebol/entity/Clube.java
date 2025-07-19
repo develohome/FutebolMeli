@@ -2,6 +2,7 @@ package com.futebolmeli.demomelifutebol.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -13,17 +14,17 @@ public class Clube {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    //@Column(unique = true, nullable = false)
     private String clube;
 
     private String estado;
-    private Date datacriacao;
+    private LocalDate datacriacao;
     private Boolean ativo  = true;
 
     public Clube() {
     }
 
-    public Clube(Long id, String clube, String estado, Date datacriacao, Boolean ativo) {
+    public Clube(Long id, String clube, String estado, LocalDate datacriacao, Boolean ativo) {
         this.id = id;
         this.clube = clube;
         this.estado = estado;
@@ -55,11 +56,11 @@ public class Clube {
         this.estado = estado;
     }
 
-    public Date getDatacriacao() {
+    public LocalDate getDatacriacao() {
         return datacriacao;
     }
 
-    public void setDatacriacao(Date datacriacao) {
+    public void setDatacriacao(LocalDate datacriacao) {
         this.datacriacao = datacriacao;
     }
 
