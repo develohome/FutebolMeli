@@ -28,9 +28,14 @@ public class PartidaController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<String> buscarPartida(@RequestBody Partida partida) {
+    public ResponseEntity<String> criarPartida(@RequestBody Partida partida) {
         String mensagem = partidaService.criarPartida(partida);
         return  ResponseEntity.status(HttpStatus.CREATED).body(mensagem);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> atualizarPartida(@PathVariable Long id, @RequestBody Partida partida) {
+        String mensagem = partidaService.atualizarPartida(id, partida);
+        return  ResponseEntity.status(HttpStatus.CREATED).body(mensagem);
+    }
 }

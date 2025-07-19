@@ -18,6 +18,19 @@ public class Partida {
     private String estadio;
     private LocalDate data;
 
+    public Partida() {
+    }
+
+    public Partida(Long id, String time1, String time2, int resultado1, int resultado2, String estadio, LocalDate data) {
+        this.id = id;
+        this.time1 = time1;
+        this.time2 = time2;
+        this.resultado1 = resultado1;
+        this.resultado2 = resultado2;
+        this.estadio = estadio;
+        this.data = data;
+    }
+
     public Long getId() {
         return id;
     }
