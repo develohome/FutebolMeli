@@ -1,9 +1,14 @@
 package com.futebolmeli.demomelifutebol.controller;
 
 import com.futebolmeli.demomelifutebol.entity.Clube;
+import com.futebolmeli.demomelifutebol.repository.ClubeRepository;
 import com.futebolmeli.demomelifutebol.service.ClubeService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +21,19 @@ public class ClubeController {
 
     @Autowired
     private ClubeService clubeService;
+
+    @Autowired
+    private ClubeRepository clubeRepository;
+
+    @GetMapping("")
+    public Page<Clube> listarClubesPage(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "2") int size,
+            @RequestParam(defaultValue = "clube") String sortBy
+    ) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return clubeRepository.findAll(pageable);
+    }
 
     @GetMapping("/")
     public List<Clube> listarClubes() {

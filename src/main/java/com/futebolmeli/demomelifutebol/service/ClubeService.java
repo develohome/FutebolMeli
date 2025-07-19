@@ -51,11 +51,12 @@ public class ClubeService {
             if(this.validarClube(clube)){
                 return "Clube ja existente";
             }
+
+            clubeRepository.save(clube);
+            return clube.getClube();
         } catch (Exception e) {
             return e.getMessage();
         }
-        clubeRepository.save(clube);
-        return clube.getClube();
     }
 
     public String atualizar(Long id, Clube clube) {
@@ -101,7 +102,6 @@ public class ClubeService {
         clubeEncontrado = clubeRepository.save(clubeEncontrado);
         return clubeEncontrado.getClube() + ", deletado com sucesso!";
     }
-
 
 /*
 * Validacoes
